@@ -31,7 +31,6 @@ public:
   void addCity(City city);
   void removeCity(int row);
   void saveEditedCities();
-  bool haveEditedCities();
 
 private:
   QList<City> m_data;

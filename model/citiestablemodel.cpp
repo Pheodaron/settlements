@@ -204,5 +204,3 @@ void CitiesTableModel::saveEditedCities() {
     update();
   }
 }
-
-bool CitiesTableModel::haveEditedCities() { return m_editedCities.count(); }
