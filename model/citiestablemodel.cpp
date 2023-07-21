@@ -68,11 +68,11 @@ QVariant CitiesTableModel::data(const QModelIndex &index, int role) const {
       break;
     }
     case 5: {
-      variant = QString::number(row.m_lat);
+      variant = row.m_lat;
       break;
     }
     case 6: {
-      variant = QString::number(row.m_lon);
+      variant = row.m_lon;
       break;
     }
     case 7: {
