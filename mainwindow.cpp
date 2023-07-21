@@ -64,4 +64,7 @@ void MainWindow::on_m_delete_button_clicked() {
   }
 }
 
-void MainWindow::on_m_edit_button_clicked() {}
+void MainWindow::on_m_edit_button_clicked() {
+  if (m_model.haveEditedCities())
+    m_model.saveEditedCities();
+}

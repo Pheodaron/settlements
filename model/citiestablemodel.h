@@ -21,15 +21,21 @@ public:
 
   bool canFetchMore(const QModelIndex &parent) const override;
   void fetchMore(const QModelIndex &parent) override;
+  Qt::ItemFlags flags(const QModelIndex &index) const override;
+  bool setData(const QModelIndex &index, const QVariant &value,
+               int role = Qt::EditRole) override;
 
   void update();
   void changePopulationFilter(int populationFilter);
   void changeTextFilter(QString text);
   bool addCity(City city);
   void removeCity(int row);
+  void saveEditedCities();
+  bool haveEditedCities();
 
 private:
   QList<City> m_data;
+  QSet<long> m_editedCities;
   CitiesRepository *m_repo;
   int m_itemsCount;
   int m_currentPopulationFilter = 0;

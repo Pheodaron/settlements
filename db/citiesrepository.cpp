@@ -107,3 +107,28 @@ void CitiesRepository::deleteCity(qlonglong cityId) {
     qWarning() << "Error while exec query:" << query.lastError().text();
   }
 }
+
+void CitiesRepository::updateCity(City city) {
+  QSqlQuery query;
+  query.prepare(
+      "UPDATE cities SET parent_id = :parent_id, type = :type, prefix = "
+      ":prefix, name = :name, name_eng = :name_eng, map_point = :map_point, "
+      "lat = :lat, lon = :lon, alt = :alt, population = :population, "
+      "description = :description, country = :country WHERE id = :id");
+  query.bindValue(":parent_id", 0);
+  query.bindValue(":type", city.m_type);
+  query.bindValue(":prefix", city.m_prefix);
+  query.bindValue(":name", city.m_name);
+  query.bindValue(":name_eng", city.m_name_eng);
+  query.bindValue(":map_point", city.m_map_point);
+  query.bindValue(":lat", city.m_lat);
+  query.bindValue(":lon", city.m_lon);
+  query.bindValue(":alt", city.m_alt); // to-do
+  query.bindValue(":population", city.m_population);
+  query.bindValue(":description", city.m_description);
+  query.bindValue(":country", city.m_country);
+  query.bindValue(":id", static_cast<qlonglong>(city.m_id));
+  if (!query.exec()) {
+    qWarning() << "Error while exec query:" << query.lastError().text();
+  }
+}
