@@ -97,3 +97,13 @@ QList<Type> CitiesRepository::getTypes() {
 
   return result;
 }
+
+void CitiesRepository::deleteCity(qlonglong cityId) {
+  QSqlQuery query;
+  query.prepare("DELETE FROM cities WHERE id = :id");
+  query.bindValue(":id", cityId);
+
+  if (!query.exec()) {
+    qWarning() << "Error while exec query:" << query.lastError().text();
+  }
+}

@@ -60,7 +60,7 @@ void MainWindow::on_m_delete_button_clicked() {
       return;
 
     QModelIndex index = select->selectedRows().at(0);
-    //        m_model->removeRow(index.row());
+    m_model.removeCity(index.row());
   }
 }
 

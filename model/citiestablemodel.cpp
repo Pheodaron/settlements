@@ -118,7 +118,6 @@ void CitiesTableModel::fetchMore(const QModelIndex &parent) {
     return;
   beginInsertRows(QModelIndex(), start, start + itemsToFetch - 1);
   m_itemsCount = m_repo->getCitiesCount(m_currentPopulationFilter, m_textFind);
-  //    m_itemsCount += itemsToFetch;
   qDebug() << m_itemsCount;
   m_data.append(m_repo->getCities(m_currentPopulationFilter, itemsToFetch,
                                   m_data.count(), m_textFind));
@@ -130,4 +129,8 @@ void CitiesTableModel::changeTextFilter(QString text) {
   update();
 }
 
-void CitiesTableModel::removeCity(int row) {}
+void CitiesTableModel::removeCity(int row) {
+  qlonglong cityId = m_data[row].m_id;
+  m_repo->deleteCity(cityId);
+  update();
+}

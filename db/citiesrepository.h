@@ -3,6 +3,7 @@
 
 #include <QDebug>
 #include <QList>
+#include <QMessageBox>
 #include <QSqlDatabase>
 #include <QSqlError>
 #include <QSqlQuery>
@@ -16,6 +17,7 @@ public:
   QList<City> getCities(int population, int limit, int offset, QString text);
   int getCitiesCount(int population, QString text);
   bool addCity(City city);
+  void deleteCity(qlonglong cityId);
   QList<Type> getTypes();
 };
 
