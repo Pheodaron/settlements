@@ -15,12 +15,16 @@ QList<City> CitiesRepository::getCities(int population, int limit, int offset,
   QList<City> result;
   QSqlQuery query;
   query.prepare(
-      "SELECT id, parent_id, type, prefix, name, name_eng, "
-      "map_point, lat, lon, alt, population, description, country "
-      "FROM cities WHERE population >= :population and (prefix LIKE :text or "
-      "name LIKE :text or map_point LIKE :text or population LIKE :text or "
-      "country LIKE :text or lat LIKE :text or lon LIKE :text or description "
-      "LIKE :text) ORDER BY name LIMIT :limit OFFSET :offset");
+      R"(
+        SELECT id, parent_id, type, prefix, name, name_eng, map_point, lat, lon,
+        alt, population, description, country
+        FROM cities WHERE population >= :population
+        AND (
+            prefix LIKE :text OR name LIKE :text OR map_point LIKE :text
+            OR population LIKE :text OR country LIKE :text OR lat LIKE :text
+            OR lon LIKE :text OR description LIKE :text)
+        ORDER BY name LIMIT :limit OFFSET :offset
+      )"); // TODO: объединить в одну строку и поиск вхождений в ней
   query.bindValue(":population", population);
   query.bindValue(":text", QString("%%1%").arg(text));
   query.bindValue(":limit", limit);
@@ -41,11 +45,14 @@ int CitiesRepository::getCitiesCount(int population, QString text) {
   int result = 0;
   QSqlQuery query;
   query.prepare(
-      "SELECT count(*) FROM cities WHERE population >= :population "
-      "and (prefix LIKE :text or "
-      "name LIKE :text or map_point LIKE :text or population LIKE :text or "
-      "country LIKE :text or lat LIKE :text or lon LIKE :text or description "
-      "LIKE :text)");
+      R"(
+        SELECT count(*)
+        FROM cities
+        WHERE population >= :population AND (
+          prefix LIKE :text OR name LIKE :text
+          OR map_point LIKE :text OR population LIKE :text OR country LIKE :text
+          OR lat LIKE :text OR lon LIKE :text OR description LIKE :text)
+      )");
   query.bindValue(":population", population);
   query.bindValue(":text", QString("%%1%").arg(text));
   if (query.exec()) {
@@ -62,9 +69,12 @@ int CitiesRepository::getCitiesCount(int population, QString text) {
 bool CitiesRepository::addCity(City city) {
   QSqlQuery query;
   query.prepare(
-      "INSERT INTO cities (prefix, parent_id, name, map_point, lat, lon, "
-      "description, population, name_eng, type) VALUES (:prefix, 0, :name, "
-      ":map_point, :lat, :lon, :description, :population, :name_eng, :type)");
+      R"(
+        INSERT INTO cities (prefix, parent_id, name, map_point, lat, lon,
+        description, population, name_eng, type)
+        VALUES (:prefix, 0, :name, :map_point, :lat, :lon, :description,
+        :population, :name_eng, :type)
+      )");
   query.bindValue(":prefix", city.m_prefix);
   query.bindValue(":name", city.m_name);
   query.bindValue(":map_point", city.m_map_point);
@@ -111,10 +121,14 @@ void CitiesRepository::deleteCity(qlonglong cityId) {
 void CitiesRepository::updateCity(City city) {
   QSqlQuery query;
   query.prepare(
-      "UPDATE cities SET parent_id = :parent_id, type = :type, prefix = "
-      ":prefix, name = :name, name_eng = :name_eng, map_point = :map_point, "
-      "lat = :lat, lon = :lon, alt = :alt, population = :population, "
-      "description = :description, country = :country WHERE id = :id");
+      R"(
+        UPDATE cities SET parent_id = :parent_id, type = :type,
+        prefix = :prefix, name = :name, name_eng = :name_eng,
+        map_point = :map_point, lat = :lat, lon = :lon, alt = :alt,
+        population = :population, description = :description,
+        country = :country
+        WHERE id = :id
+      )");
   query.bindValue(":parent_id", 0);
   query.bindValue(":type", city.m_type);
   query.bindValue(":prefix", city.m_prefix);
