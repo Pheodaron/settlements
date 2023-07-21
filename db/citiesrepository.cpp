@@ -1,8 +1,8 @@
 #include "citiesrepository.h"
 
-CitiesRepository::CitiesRepository() {
+CitiesRepository::CitiesRepository(QString dbPath) {
   auto db = QSqlDatabase::addDatabase("QSQLITE");
-  db.setDatabaseName("/home/astra/stc/settlements/cities.db3");
+  db.setDatabaseName(dbPath);
   if (db.open()) {
     qDebug() << "success!";
   } else {

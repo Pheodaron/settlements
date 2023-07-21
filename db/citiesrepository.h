@@ -12,7 +12,7 @@
 
 class CitiesRepository {
 public:
-  CitiesRepository();
+  CitiesRepository(QString dbPath);
 
   QList<City> getCities(int population, int limit, int offset, QString text);
   int getCitiesCount(int population, QString text);

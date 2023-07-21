@@ -1,8 +1,9 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent), ui(new Ui::MainWindow), m_model(&m_repo, this) {
+MainWindow::MainWindow(QString dbPath, QWidget *parent)
+    : QMainWindow(parent), ui(new Ui::MainWindow), m_repo(dbPath),
+      m_model(&m_repo, this) {
   ui->setupUi(this);
   ui->m_tableView->setModel(&m_model);
 
