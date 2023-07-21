@@ -123,11 +123,12 @@ void CitiesRepository::updateCity(City city) {
   query.bindValue(":map_point", city.m_map_point);
   query.bindValue(":lat", city.m_lat);
   query.bindValue(":lon", city.m_lon);
-  query.bindValue(":alt", city.m_alt); // to-do
+  query.bindValue(":alt", city.m_alt); // TODO: long problem
   query.bindValue(":population", city.m_population);
   query.bindValue(":description", city.m_description);
   query.bindValue(":country", city.m_country);
   query.bindValue(":id", static_cast<qlonglong>(city.m_id));
+
   if (!query.exec()) {
     qWarning() << "Error while exec query:" << query.lastError().text();
   }
