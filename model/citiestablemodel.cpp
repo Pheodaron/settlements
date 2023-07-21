@@ -86,15 +86,16 @@ QVariant CitiesTableModel::data(const QModelIndex &index, int role) const {
 }
 
 void CitiesTableModel::changePopulationFilter(int populationFilter) {
-    m_currentPopulationFilter = populationFilter;
-    m_itemsCount = m_repo->getCitiesCount(m_currentPopulationFilter, m_textFind);
-    update();
+  m_currentPopulationFilter = populationFilter;
+  m_itemsCount = m_repo->getCitiesCount(m_currentPopulationFilter, m_textFind);
+  update();
 }
 
 void CitiesTableModel::update() {
   m_itemsCount = m_repo->getCitiesCount(m_currentPopulationFilter, m_textFind);
   beginResetModel();
-  m_data = m_repo->getCities(m_currentPopulationFilter, 100, m_data.count(), m_textFind);
+  m_data = m_repo->getCities(m_currentPopulationFilter, 100, m_data.count(),
+                             m_textFind);
   endResetModel();
 }
 
@@ -113,11 +114,12 @@ void CitiesTableModel::fetchMore(const QModelIndex &parent) {
   m_itemsCount = m_repo->getCitiesCount(m_currentPopulationFilter, m_textFind);
   //    m_itemsCount += itemsToFetch;
   qDebug() << m_itemsCount;
-  m_data.append(m_repo->getCities(m_currentPopulationFilter, itemsToFetch, m_data.count(), m_textFind));
+  m_data.append(m_repo->getCities(m_currentPopulationFilter, itemsToFetch,
+                                  m_data.count(), m_textFind));
   endInsertRows();
 }
 
 void CitiesTableModel::changeTextFilter(QString text) {
-    m_textFind = text;
-    update();
+  m_textFind = text;
+  update();
 }

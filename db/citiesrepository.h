@@ -1,21 +1,20 @@
 #ifndef CITIESREPOSITORY_H
 #define CITIESREPOSITORY_H
 
+#include <QDebug>
+#include <QList>
 #include <QSqlDatabase>
 #include <QSqlError>
 #include <QSqlQuery>
-#include <QList>
-#include <QDebug>
 #include <city.h>
 
-class CitiesRepository
-{
+class CitiesRepository {
 public:
-    CitiesRepository();
+  CitiesRepository();
 
-    QList<City> getCities(int population, int limit, int offset, QString text);
-    int getCitiesCount(int population, QString text);
-    void setCountry(QList<City> list);
+  QList<City> getCities(int population, int limit, int offset, QString text);
+  int getCitiesCount(int population, QString text);
+  void setCountry(QList<City> list);
 };
 
 #endif // CITIESREPOSITORY_H
