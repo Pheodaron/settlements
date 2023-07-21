@@ -26,7 +26,11 @@ set(PROJECT_SOURCES
         model/citiestablemodel.h
         model/citiestablemodel.cpp
         populationfilter.h
-#        populationfilter.cpp
+        adddialog.h
+        adddialog.cpp
+        adddialog.ui
+        type.h
+        type.cpp
 )
 
 add_executable(settlements

@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QScrollBar>
 #include <QSortFilterProxyModel>
+#include <adddialog.h>
 #include <db/citiesrepository.h>
 #include <model/citiestablemodel.h>
 
@@ -19,6 +20,13 @@ class MainWindow : public QMainWindow {
 public:
   MainWindow(QWidget *parent = nullptr);
   ~MainWindow();
+
+private slots:
+  void on_m_add_button_clicked();
+
+  void on_m_delete_button_clicked();
+
+  void on_m_edit_button_clicked();
 
 private:
   Ui::MainWindow *ui;

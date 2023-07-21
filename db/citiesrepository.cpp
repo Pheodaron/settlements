@@ -40,15 +40,56 @@ QList<City> CitiesRepository::getCities(int population, int limit, int offset,
 int CitiesRepository::getCitiesCount(int population, QString text) {
   int result = 0;
   QSqlQuery query;
-  query.prepare("SELECT count(*) FROM cities WHERE population >= :population "
-                "and (prefix LIKE :text or name LIKE :text or map_point LIKE "
-                ":text or population LIKE :text or country LIKE :text or lat "
-                "LIKE :text or lon LIKE :text or description LIKE :text)");
+  query.prepare(
+      "SELECT count(*) FROM cities WHERE population >= :population "
+      "and (prefix LIKE :text or "
+      "name LIKE :text or map_point LIKE :text or population LIKE :text or "
+      "country LIKE :text or lat LIKE :text or lon LIKE :text or description "
+      "LIKE :text)");
   query.bindValue(":population", population);
   query.bindValue(":text", QString("%%1%").arg(text));
   if (query.exec()) {
     if (query.first()) {
       result = query.value(0).toInt();
+    }
+  } else {
+    qWarning() << "Error while exec query:" << query.lastError().text();
+  }
+
+  return result;
+}
+
+bool CitiesRepository::addCity(City city) {
+  QSqlQuery query;
+  query.prepare(
+      "INSERT INTO cities (prefix, parent_id, name, map_point, lat, lon, "
+      "description, population, name_eng, type) VALUES (:prefix, 0, :name, "
+      ":map_point, :lat, :lon, :description, :population, :name_eng, :type)");
+  query.bindValue(":prefix", city.m_prefix);
+  query.bindValue(":name", city.m_name);
+  query.bindValue(":map_point", city.m_map_point);
+  query.bindValue(":lat", city.m_lat);
+  query.bindValue(":lon", city.m_lon);
+  query.bindValue(":description", city.m_description);
+  query.bindValue(":population", city.m_population);
+  query.bindValue(":name_eng", city.m_name_eng);
+  query.bindValue(":type", city.m_type);
+
+  if (query.exec()) {
+    return true;
+  } else {
+    qWarning() << "Error while exec query:" << query.lastError().text();
+    return false;
+  }
+}
+
+QList<Type> CitiesRepository::getTypes() {
+  QList<Type> result;
+  QSqlQuery query("SELECT * FROM types");
+
+  if (query.exec()) {
+    while (query.next()) {
+      result.append(Type(query));
     }
   } else {
     qWarning() << "Error while exec query:" << query.lastError().text();

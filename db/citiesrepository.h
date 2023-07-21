@@ -7,6 +7,7 @@
 #include <QSqlError>
 #include <QSqlQuery>
 #include <city.h>
+#include <type.h>
 
 class CitiesRepository {
 public:
@@ -14,7 +15,8 @@ public:
 
   QList<City> getCities(int population, int limit, int offset, QString text);
   int getCitiesCount(int population, QString text);
-  void setCountry(QList<City> list);
+  bool addCity(City city);
+  QList<Type> getTypes();
 };
 
 #endif // CITIESREPOSITORY_H

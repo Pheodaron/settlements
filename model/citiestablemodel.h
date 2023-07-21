@@ -25,6 +25,8 @@ public:
   void update();
   void changePopulationFilter(int populationFilter);
   void changeTextFilter(QString text);
+  bool addCity(City city);
+  void removeCity(int row);
 
 private:
   QList<City> m_data;

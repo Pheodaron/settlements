@@ -8,6 +8,7 @@
 class City {
 public:
   City(QSqlQuery query);
+  City() = default;
 
   long m_id;
   int m_parent_id;

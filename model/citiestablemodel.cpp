@@ -85,6 +85,11 @@ QVariant CitiesTableModel::data(const QModelIndex &index, int role) const {
   return variant;
 }
 
+bool CitiesTableModel::addCity(City city) {
+  m_repo->addCity(city);
+  update();
+}
+
 void CitiesTableModel::changePopulationFilter(int populationFilter) {
   m_currentPopulationFilter = populationFilter;
   m_itemsCount = m_repo->getCitiesCount(m_currentPopulationFilter, m_textFind);
@@ -94,6 +99,7 @@ void CitiesTableModel::changePopulationFilter(int populationFilter) {
 void CitiesTableModel::update() {
   m_itemsCount = m_repo->getCitiesCount(m_currentPopulationFilter, m_textFind);
   beginResetModel();
+  m_data.clear();
   m_data = m_repo->getCities(m_currentPopulationFilter, 100, m_data.count(),
                              m_textFind);
   endResetModel();
@@ -123,3 +129,5 @@ void CitiesTableModel::changeTextFilter(QString text) {
   m_textFind = text;
   update();
 }
+
+void CitiesTableModel::removeCity(int row) {}
