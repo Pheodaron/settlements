@@ -7,8 +7,8 @@
 #include <QSqlDatabase>
 #include <QSqlError>
 #include <QSqlQuery>
-#include <city.h>
-#include <type.h>
+#include <entity/city.h>
+#include <entity/type.h>
 
 class CitiesRepository {
 public:

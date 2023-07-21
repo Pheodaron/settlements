@@ -14,27 +14,35 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(QT NAMES Qt5 COMPONENTS Widgets Sql REQUIRED)
 find_package(Qt5 COMPONENTS Widgets Sql REQUIRED)
 
-set(PROJECT_SOURCES
+set(SOURCES
         main.cpp
         mainwindow.cpp
-        mainwindow.h
-        mainwindow.ui
-        db/citiesrepository.h
         db/citiesrepository.cpp
-        city.h
-        city.cpp
-        model/citiestablemodel.h
+        entity/city.cpp
         model/citiestablemodel.cpp
+        dialog/adddialog.cpp
+        entity/type.cpp
+)
+
+set(HEADERS
+        mainwindow.h
+        db/citiesrepository.h
+        entity/city.h
+        model/citiestablemodel.h
         populationfilter.h
-        adddialog.h
-        adddialog.cpp
-        adddialog.ui
-        type.h
-        type.cpp
+        dialog/adddialog.h
+        entity/type.h
+)
+
+set(FORMS
+        mainwindow.ui
+        dialog/adddialog.ui
 )
 
 add_executable(settlements
-    ${PROJECT_SOURCES}
+    ${SOURCES}
+    ${HEADERS}
+    ${FORMS}
 )
 
 target_link_libraries(settlements PRIVATE Qt5::Widgets Qt5::Sql)

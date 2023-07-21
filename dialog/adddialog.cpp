@@ -1,4 +1,4 @@
-#include "adddialog.h"
+#include "dialog/adddialog.h"
 #include "ui_adddialog.h"
 
 AddDialog::AddDialog(QList<Type> types, CitiesTableModel *model,

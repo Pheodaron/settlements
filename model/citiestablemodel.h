@@ -2,8 +2,8 @@
 #define CITIESTABLEMODEL_H
 
 #include <QAbstractTableModel>
-#include <city.h>
 #include <db/citiesrepository.h>
+#include <entity/city.h>
 #include <populationfilter.h>
 
 class CitiesTableModel : public QAbstractTableModel {

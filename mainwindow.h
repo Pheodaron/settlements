@@ -4,8 +4,8 @@
 #include <QMainWindow>
 #include <QScrollBar>
 #include <QSortFilterProxyModel>
-#include <adddialog.h>
 #include <db/citiesrepository.h>
+#include <dialog/adddialog.h>
 #include <model/citiestablemodel.h>
 
 QT_BEGIN_NAMESPACE

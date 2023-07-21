@@ -1,4 +1,4 @@
-#include "city.h"
+#include "entity/city.h"
 
 City::City(QSqlQuery query) {
   m_id = query.value(0).toLongLong();

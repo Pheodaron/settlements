@@ -3,7 +3,7 @@
 
 #include <QDialog>
 #include <QMessageBox>
-#include <city.h>
+#include <entity/city.h>
 #include <limits>
 #include <model/citiestablemodel.h>
 
