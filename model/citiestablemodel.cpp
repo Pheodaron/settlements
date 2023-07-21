@@ -33,14 +33,10 @@ QVariant CitiesTableModel::headerData(int section, Qt::Orientation orientation,
 }
 
 int CitiesTableModel::rowCount(const QModelIndex &parent) const {
-  //  if (parent.isValid())
   return m_data.count();
 }
 
-int CitiesTableModel::columnCount(const QModelIndex &parent) const {
-  //  if (parent.isValid())
-  return 8;
-}
+int CitiesTableModel::columnCount(const QModelIndex &parent) const { return 8; }
 
 QVariant CitiesTableModel::data(const QModelIndex &index, int role) const {
   QVariant variant;
@@ -88,7 +84,7 @@ QVariant CitiesTableModel::data(const QModelIndex &index, int role) const {
   return variant;
 }
 
-bool CitiesTableModel::addCity(City city) {
+void CitiesTableModel::addCity(City city) {
   m_repo->addCity(city);
   update();
 }

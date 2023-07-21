@@ -13,6 +13,27 @@ MainWindow::MainWindow(QWidget *parent)
   ui->m_tableView->verticalHeader()->hide();
   ui->m_tableView->horizontalHeader()->setSectionResizeMode(
       QHeaderView::Stretch);
+  ui->m_tableView->horizontalHeader()->setSectionResizeMode(
+      0, QHeaderView::ResizeToContents);
+  ui->m_tableView->horizontalHeader()->setSectionResizeMode(
+      1, QHeaderView::Interactive);
+  ui->m_tableView->horizontalHeader()->setSectionResizeMode(
+      2, QHeaderView::ResizeToContents);
+  ui->m_tableView->horizontalHeader()->setSectionResizeMode(
+      3, QHeaderView::ResizeToContents);
+  ui->m_tableView->horizontalHeader()->setSectionResizeMode(
+      4, QHeaderView::Interactive);
+  ui->m_tableView->horizontalHeader()->setSectionResizeMode(
+      5, QHeaderView::ResizeToContents);
+  ui->m_tableView->horizontalHeader()->setSectionResizeMode(
+      6, QHeaderView::ResizeToContents);
+
+  QFont font = ui->m_tableView->font();
+  QFontMetrics fm = QFontMetrics(font);
+
+  ui->m_tableView->setColumnWidth(1, fm.horizontalAdvance("Название") + 200);
+
+  ui->m_tableView->setColumnWidth(4, fm.horizontalAdvance("Страна") + 200);
 
   ui->m_comboBox->addItem("Население не учитывать.",
                           PopulationFilter::NoFilter);

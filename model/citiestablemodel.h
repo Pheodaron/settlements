@@ -28,7 +28,7 @@ public:
   void update();
   void changePopulationFilter(int populationFilter);
   void changeTextFilter(QString text);
-  bool addCity(City city);
+  void addCity(City city);
   void removeCity(int row);
   void saveEditedCities();
   bool haveEditedCities();
