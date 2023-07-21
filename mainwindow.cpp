@@ -28,12 +28,9 @@ MainWindow::MainWindow(QWidget *parent)
   ui->m_tableView->horizontalHeader()->setSectionResizeMode(
       6, QHeaderView::ResizeToContents);
 
-  QFont font = ui->m_tableView->font();
-  QFontMetrics fm = QFontMetrics(font);
+  ui->m_tableView->setColumnWidth(1, 250);
 
-  ui->m_tableView->setColumnWidth(1, fm.horizontalAdvance("Название") + 200);
-
-  ui->m_tableView->setColumnWidth(4, fm.horizontalAdvance("Страна") + 200);
+  ui->m_tableView->setColumnWidth(4, 250);
 
   ui->m_comboBox->addItem("Население не учитывать.",
                           PopulationFilter::NoFilter);
@@ -85,7 +82,4 @@ void MainWindow::on_m_delete_button_clicked() {
   }
 }
 
-void MainWindow::on_m_edit_button_clicked() {
-  if (m_model.haveEditedCities())
-    m_model.saveEditedCities();
-}
+void MainWindow::on_m_edit_button_clicked() { m_model.saveEditedCities(); }

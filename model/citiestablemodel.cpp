@@ -68,11 +68,11 @@ QVariant CitiesTableModel::data(const QModelIndex &index, int role) const {
       break;
     }
     case 5: {
-      variant = row.m_lat;
+      variant = QString::number(row.m_lat);
       break;
     }
     case 6: {
-      variant = row.m_lon;
+      variant = QString::number(row.m_lon);
       break;
     }
     case 7: {
@@ -194,13 +194,15 @@ bool CitiesTableModel::setData(const QModelIndex &index, const QVariant &value,
 }
 
 void CitiesTableModel::saveEditedCities() {
-  for (City &item : m_data) {
-    if (m_editedCities.contains(item.m_id)) {
-      m_repo->updateCity(item);
+  if (m_data.count()) {
+    for (City &item : m_data) {
+      if (m_editedCities.contains(item.m_id)) {
+        m_repo->updateCity(item);
+      }
     }
+    m_editedCities.clear();
+    update();
   }
-  m_editedCities.clear();
-  update();
 }
 
 bool CitiesTableModel::haveEditedCities() { return m_editedCities.count(); }
