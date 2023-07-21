@@ -124,7 +124,7 @@ void CitiesTableModel::fetchMore(const QModelIndex &parent) {
     return;
   beginInsertRows(QModelIndex(), start, start + itemsToFetch - 1);
   m_itemsCount = m_repo->getCitiesCount(m_currentPopulationFilter, m_textFind);
-  qDebug() << m_itemsCount;
+  //  qDebug() << m_itemsCount;
   m_data.append(m_repo->getCities(m_currentPopulationFilter, itemsToFetch,
                                   m_data.count(), m_textFind));
   endInsertRows();
