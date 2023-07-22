@@ -35,7 +35,6 @@ public:
 
 private:
   QList<City> m_data;
-  QSet<long> m_editedCities;
   CitiesRepository *m_repo;
   int m_itemsCount;
   int m_currentPopulationFilter = 0;

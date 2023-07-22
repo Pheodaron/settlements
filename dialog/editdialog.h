@@ -1,7 +1,6 @@
 #ifndef EDITDIALOG_H
 #define EDITDIALOG_H
 
-#include <QDebug>
 #include <QDialog>
 #include <QMessageBox>
 #include <entity/city.h>

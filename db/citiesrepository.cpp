@@ -3,10 +3,8 @@
 CitiesRepository::CitiesRepository(QString dbPath) {
   auto db = QSqlDatabase::addDatabase("QSQLITE");
   db.setDatabaseName(dbPath);
-  if (db.open()) {
-    qWarning() << "success!";
-  } else {
-    qWarning() << "error";
+  if (!db.open()) {
+    qWarning() << "Database not open!";
   }
 }
 
