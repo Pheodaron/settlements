@@ -92,13 +92,11 @@ void CitiesTableModel::addCity(City city) {
 void CitiesTableModel::changePopulationFilter(int populationFilter) {
   m_currentPopulationFilter = populationFilter;
   m_itemsCount = m_repo->getCitiesCount(m_currentPopulationFilter, m_textFind);
-  m_editedCities.clear();
   update();
 }
 
 void CitiesTableModel::changeTextFilter(QString text) {
   m_textFind = text;
-  m_editedCities.clear();
   update();
 }
 
