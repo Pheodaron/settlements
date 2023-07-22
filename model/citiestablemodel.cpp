@@ -193,14 +193,9 @@ bool CitiesTableModel::setData(const QModelIndex &index, const QVariant &value,
   return false;
 }
 
-void CitiesTableModel::saveEditedCities() {
-  if (m_data.count()) {
-    for (City &item : m_data) {
-      if (m_editedCities.contains(item.m_id)) {
-        m_repo->updateCity(item);
-      }
-    }
-    m_editedCities.clear();
-    update();
-  }
+void CitiesTableModel::editCity(City city) {
+  m_repo->updateCity(city);
+  update();
 }
+
+City CitiesTableModel::getCity(int row) const { return m_data[row]; }

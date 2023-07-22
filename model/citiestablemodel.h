@@ -30,7 +30,8 @@ public:
   void changeTextFilter(QString text);
   void addCity(City city);
   void removeCity(int row);
-  void saveEditedCities();
+  void editCity(City city);
+  City getCity(int row) const;
 
 private:
   QList<City> m_data;

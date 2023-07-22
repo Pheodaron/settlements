@@ -87,7 +87,7 @@
       <item>
        <widget class="QPushButton" name="m_edit_button">
         <property name="text">
-         <string>Сохранить</string>
+         <string>Редактировать</string>
         </property>
        </widget>
       </item>
