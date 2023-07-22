@@ -6,44 +6,51 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>300</width>
-    <height>343</height>
+    <width>346</width>
+    <height>417</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Добавить</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="7" column="1">
-    <widget class="QLineEdit" name="m_latLineEdit"/>
-   </item>
-   <item row="8" column="0">
-    <widget class="QLabel" name="m_lonLabel">
+   <item row="5" column="0">
+    <widget class="QLabel" name="m_populationLabel">
      <property name="text">
-      <string>Долгота</string>
+      <string>Население</string>
      </property>
     </widget>
-   </item>
-   <item row="1" column="0">
-    <widget class="QLabel" name="m_prefixLabel">
-     <property name="text">
-      <string>Префикс</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="1">
-    <widget class="QLineEdit" name="m_nameLineEdit"/>
    </item>
    <item row="1" column="1">
     <widget class="QLineEdit" name="m_prefixLineEdit"/>
    </item>
+   <item row="0" column="1">
+    <widget class="QComboBox" name="m_typeComboBox">
+     <property name="editable">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="1">
+    <widget class="QLineEdit" name="m_lonLineEdit"/>
+   </item>
+   <item row="3" column="1">
+    <widget class="QLineEdit" name="m_nameEngLineEdit"/>
+   </item>
+   <item row="6" column="1">
+    <widget class="QLineEdit" name="m_countryLineEdit"/>
+   </item>
    <item row="4" column="1">
     <widget class="QLineEdit" name="m_mapPointLineEdit"/>
    </item>
-   <item row="5" column="1">
-    <widget class="QLineEdit" name="m_populationLineEdit"/>
+   <item row="7" column="0">
+    <widget class="QLabel" name="m_latLabel">
+     <property name="text">
+      <string>Широта</string>
+     </property>
+    </widget>
    </item>
-   <item row="10" column="1">
+   <item row="11" column="1">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QPushButton" name="m_acceptButton">
@@ -61,10 +68,10 @@
      </item>
     </layout>
    </item>
-   <item row="9" column="0">
-    <widget class="QLabel" name="m_descriptionLabel">
+   <item row="1" column="0">
+    <widget class="QLabel" name="m_prefixLabel">
      <property name="text">
-      <string>Описание</string>
+      <string>Префикс</string>
      </property>
     </widget>
    </item>
@@ -82,12 +89,22 @@
      </property>
     </widget>
    </item>
-   <item row="7" column="0">
-    <widget class="QLabel" name="m_latLabel">
+   <item row="10" column="0">
+    <widget class="QLabel" name="m_descriptionLabel">
      <property name="text">
-      <string>Широта</string>
+      <string>Описание</string>
      </property>
     </widget>
+   </item>
+   <item row="8" column="0">
+    <widget class="QLabel" name="m_lonLabel">
+     <property name="text">
+      <string>Долгота</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1">
+    <widget class="QLineEdit" name="m_populationLineEdit"/>
    </item>
    <item row="3" column="0">
     <widget class="QLabel" name="m_nameEng">
@@ -96,21 +113,12 @@
      </property>
     </widget>
    </item>
-   <item row="8" column="1">
-    <widget class="QLineEdit" name="m_lonLineEdit"/>
-   </item>
-   <item row="6" column="1">
-    <widget class="QLineEdit" name="m_countryLineEdit"/>
-   </item>
-   <item row="5" column="0">
-    <widget class="QLabel" name="m_populationLabel">
+   <item row="0" column="0">
+    <widget class="QLabel" name="m_typeLabel">
      <property name="text">
-      <string>Население</string>
+      <string>Тип</string>
      </property>
     </widget>
-   </item>
-   <item row="3" column="1">
-    <widget class="QLineEdit" name="m_nameEngLineEdit"/>
    </item>
    <item row="4" column="0">
     <widget class="QLabel" name="m_mapPointLabel">
@@ -119,18 +127,24 @@
      </property>
     </widget>
    </item>
-   <item row="9" column="1">
+   <item row="10" column="1">
     <widget class="QLineEdit" name="m_descriptionLineEdit"/>
    </item>
-   <item row="0" column="0">
-    <widget class="QLabel" name="m_typeLabel">
+   <item row="2" column="1">
+    <widget class="QLineEdit" name="m_nameLineEdit"/>
+   </item>
+   <item row="7" column="1">
+    <widget class="QLineEdit" name="m_latLineEdit"/>
+   </item>
+   <item row="9" column="0">
+    <widget class="QLabel" name="m_altLabel">
      <property name="text">
-      <string>Тип</string>
+      <string>Высота</string>
      </property>
     </widget>
    </item>
-   <item row="0" column="1">
-    <widget class="QComboBox" name="m_typeComboBox"/>
+   <item row="9" column="1">
+    <widget class="QLineEdit" name="m_altLineEdit"/>
    </item>
   </layout>
  </widget>

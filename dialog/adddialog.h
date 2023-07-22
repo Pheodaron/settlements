@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QMessageBox>
+#include <QRegExpValidator>
 #include <entity/city.h>
 #include <limits>
 #include <model/citiestablemodel.h>
@@ -29,6 +30,12 @@ private slots:
 private:
   Ui::AddDialog *ui;
   CitiesTableModel *m_model;
+  QMap<int, int> m_typeIds;
+  QMap<QString, int> m_typesTable;
+
+  QRegExp latRx;
+  QRegExp lonRx;
+  QRegExp altRx;
 };
 
 #endif // ADDDIALOG_H
