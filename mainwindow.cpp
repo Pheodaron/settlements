@@ -83,4 +83,11 @@ void MainWindow::on_m_delete_button_clicked() {
   }
 }
 
-void MainWindow::on_m_edit_button_clicked() { m_model.saveEditedCities(); }
+void MainWindow::on_m_edit_button_clicked() {
+  QItemSelectionModel *select = ui->m_tableView->selectionModel();
+  if (select->hasSelection()) {
+    QModelIndex index = select->selectedRows().at(0);
+    EditDialog dialog(index.row(), m_repo.getTypes(), &m_model, this);
+    dialog.exec();
+  }
+}

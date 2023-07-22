@@ -21,6 +21,7 @@ set(SOURCES
         entity/city.cpp
         model/citiestablemodel.cpp
         dialog/adddialog.cpp
+        dialog/editdialog.cpp
         entity/type.cpp
 )
 
@@ -31,12 +32,14 @@ set(HEADERS
         model/citiestablemodel.h
         populationfilter.h
         dialog/adddialog.h
+        dialog/editdialog.h
         entity/type.h
 )
 
 set(FORMS
         mainwindow.ui
         dialog/adddialog.ui
+        dialog/editdialog.ui
 )
 
 add_executable(settlements
