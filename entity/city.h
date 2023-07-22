@@ -10,8 +10,8 @@ public:
   City(QSqlQuery query);
   City() = default;
 
-  long m_id;
-  int m_parent_id;
+  long long m_id;
+  long long m_parent_id;
   QString m_type;
   QString m_prefix;
   QString m_name;

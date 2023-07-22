@@ -131,7 +131,7 @@ void CitiesTableModel::fetchMore(const QModelIndex &parent) {
 }
 
 void CitiesTableModel::removeCity(int row) {
-  qlonglong cityId = m_data[row].m_id;
+  long long cityId = m_data[row].m_id;
   m_repo->deleteCity(cityId);
   update();
 }

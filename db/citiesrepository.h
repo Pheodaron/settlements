@@ -17,7 +17,7 @@ public:
   QList<City> getCities(int population, int limit, int offset, QString text);
   int getCitiesCount(int population, QString text);
   bool addCity(City city);
-  void deleteCity(qlonglong cityId);
+  void deleteCity(long long cityId);
   void updateCity(City city);
   QList<Type> getTypes();
 };
