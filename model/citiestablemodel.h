@@ -21,9 +21,6 @@ public:
 
   bool canFetchMore(const QModelIndex &parent) const override;
   void fetchMore(const QModelIndex &parent) override;
-  Qt::ItemFlags flags(const QModelIndex &index) const override;
-  bool setData(const QModelIndex &index, const QVariant &value,
-               int role = Qt::EditRole) override;
 
   void update();
   void changePopulationFilter(int populationFilter);

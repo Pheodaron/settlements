@@ -133,63 +133,6 @@ void CitiesTableModel::removeCity(int row) {
   update();
 }
 
-Qt::ItemFlags CitiesTableModel::flags(const QModelIndex &index) const {
-  Qt::ItemFlags flags = Qt::ItemIsEnabled;
-
-  if (index.isValid()) {
-    flags |= Qt::ItemIsEditable;
-  }
-  flags |= Qt::ItemIsSelectable;
-
-  return flags;
-}
-
-bool CitiesTableModel::setData(const QModelIndex &index, const QVariant &value,
-                               int role) {
-  if (!index.isValid())
-    return false;
-  if (role == Qt::EditRole) {
-    switch (index.column()) {
-    case 0: {
-      m_data[index.row()].m_prefix = value.toString();
-      break;
-    }
-    case 1: {
-      m_data[index.row()].m_name = value.toString();
-      break;
-    }
-    case 2: {
-      m_data[index.row()].m_map_point = value.toString();
-      break;
-    }
-    case 3: {
-      m_data[index.row()].m_population = value.toInt();
-      break;
-    }
-    case 4: {
-      m_data[index.row()].m_country = value.toString();
-      break;
-    }
-    case 5: {
-      m_data[index.row()].m_lat = value.toDouble();
-      break;
-    }
-    case 6: {
-      m_data[index.row()].m_lon = value.toDouble();
-      break;
-    }
-    case 7: {
-      m_data[index.row()].m_description = value.toString();
-      break;
-    }
-    }
-    m_editedCities.insert(m_data[index.row()].m_id);
-    emit dataChanged(index, index);
-    return true;
-  }
-  return false;
-}
-
 void CitiesTableModel::editCity(City city) {
   m_repo->updateCity(city);
   update();
