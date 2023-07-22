@@ -64,9 +64,6 @@ void EditDialog::on_m_acceptButton_clicked() {
 
     m_model->editCity(m_city);
     close();
-  } else {
-    QMessageBox::warning(this, "Предупреждение",
-                         "Присутствуют некорректные поля", QMessageBox::Ok);
   }
 }
 
