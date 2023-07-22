@@ -24,14 +24,16 @@ MainWindow::MainWindow(QString dbPath, QWidget *parent)
       3, QHeaderView::ResizeToContents);
   ui->m_tableView->horizontalHeader()->setSectionResizeMode(
       4, QHeaderView::Interactive);
-  ui->m_tableView->horizontalHeader()->setSectionResizeMode(
-      5, QHeaderView::ResizeToContents);
-  ui->m_tableView->horizontalHeader()->setSectionResizeMode(
-      6, QHeaderView::ResizeToContents);
+  ui->m_tableView->horizontalHeader()->setSectionResizeMode(5,
+                                                            QHeaderView::Fixed);
+  ui->m_tableView->horizontalHeader()->setSectionResizeMode(6,
+                                                            QHeaderView::Fixed);
 
   ui->m_tableView->setColumnWidth(1, 250);
 
   ui->m_tableView->setColumnWidth(4, 250);
+  ui->m_tableView->setColumnWidth(5, 130);
+  ui->m_tableView->setColumnWidth(6, 130);
 
   ui->m_comboBox->addItem("Население не учитывать.",
                           PopulationFilter::NoFilter);
