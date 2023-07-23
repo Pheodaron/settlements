@@ -6,7 +6,11 @@
 int main(int argc, char *argv[]) {
   QString absolutePath;
   if (argc == 1) {
+#ifdef __linux__
     QFileInfo file("./cities.db3");
+#elif _WIN32
+    QFileInfo file("/etc/cities.db3");
+#endif
     if (file.exists()) {
       absolutePath = file.absoluteFilePath();
     } else {
