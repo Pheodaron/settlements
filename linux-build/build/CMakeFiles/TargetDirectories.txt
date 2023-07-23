@@ -1,4 +1,0 @@
-/home/astra/stc/settlements/linux-build/build/CMakeFiles/rebuild_cache.dir
-/home/astra/stc/settlements/linux-build/build/CMakeFiles/settlements.dir
-/home/astra/stc/settlements/linux-build/build/CMakeFiles/edit_cache.dir
-/home/astra/stc/settlements/linux-build/build/CMakeFiles/settlements_autogen.dir
