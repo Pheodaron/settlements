@@ -29,7 +29,6 @@ set(HEADERS
         db/citiesrepository.h
         entity/city.h
         model/citiestablemodel.h
-        populationfilter.h
         dialog/editdialog.h
         entity/type.h
 )
