@@ -15,3 +15,4 @@ cp ./debian-manifest/control ./settlements-editor/DEBIAN/control
 mkdir ./settlements-editor/etc/
 cp ../cities.db3 ./settlements-editor/etc
 dpkg-deb --root-owner-group --build settlements-editor
+rm -rf ./settlements-editor
