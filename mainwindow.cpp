@@ -67,7 +67,7 @@ MainWindow::MainWindow(QString dbPath, QWidget *parent)
 MainWindow::~MainWindow() { delete ui; }
 
 void MainWindow::on_m_add_button_clicked() {
-  AddDialog dialog(m_repo.getTypes(), &m_model, this);
+  EditDialog dialog(m_repo.getTypes(), &m_model, this);
   dialog.exec();
 }
 

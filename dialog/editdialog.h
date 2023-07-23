@@ -15,6 +15,8 @@ class EditDialog : public QDialog {
   Q_OBJECT
 
 public:
+  explicit EditDialog(QList<Type> types, CitiesTableModel *model,
+                      QWidget *parent = nullptr);
   explicit EditDialog(int row, QList<Type> types, CitiesTableModel *model,
                       QWidget *parent = nullptr);
   ~EditDialog();
@@ -37,6 +39,8 @@ private:
   QRegExp latRx;
   QRegExp lonRx;
   QRegExp altRx;
+
+  bool isEditOp = false;
 };
 
 #endif // EDITDIALOG_H

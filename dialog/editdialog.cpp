@@ -1,13 +1,13 @@
 #include "editdialog.h"
 #include "ui_editdialog.h"
 
-EditDialog::EditDialog(int row, QList<Type> types, CitiesTableModel *model,
+EditDialog::EditDialog(QList<Type> types, CitiesTableModel *model,
                        QWidget *parent)
     : QDialog(parent), ui(new Ui::EditDialog), m_model(model),
-      m_city(m_model->getCity(row)), latRx("^-?\\d{1,2}(\\.\\d{1,6})?$"),
-      lonRx("^-?\\d{1,3}(\\.\\d{1,6})?$"), altRx("^-?\\d{1,}(\\.\\d{1,})?$") {
-  ui->setupUi(this);
+      latRx("^-?\\d{1,2}(\\.\\d{1,6})?$"), lonRx("^-?\\d{1,3}(\\.\\d{1,6})?$"),
+      altRx("^-?\\d{1,}(\\.\\d{1,})?$") {
 
+  ui->setupUi(this);
   for (Type &item : types) {
     ui->m_typeComboBox->addItem(item.m_type_name);
     m_typesTable.insert(item.m_type_name, item.m_type_id);
@@ -21,6 +21,18 @@ EditDialog::EditDialog(int row, QList<Type> types, CitiesTableModel *model,
   ui->m_lonLineEdit->setValidator(new QRegExpValidator(lonRx, this));
   ui->m_lonLineEdit->setValidator(new QRegExpValidator(altRx, this));
   ui->m_altLineEdit->setValidator(new QDoubleValidator(this));
+
+  ui->m_populationLineEdit->setText("0");
+  ui->m_latLineEdit->setText("0.0");
+  ui->m_lonLineEdit->setText("0.0");
+  ui->m_altLineEdit->setText("0.0");
+}
+
+EditDialog::EditDialog(int row, QList<Type> types, CitiesTableModel *model,
+                       QWidget *parent)
+    : EditDialog(types, model, parent) {
+  isEditOp = true;
+  m_city = m_model->getCity(row);
 
   QRegExp re("\\d*");
   if (re.exactMatch(m_city.m_type) && !m_city.m_type.isEmpty()) {
@@ -44,6 +56,7 @@ EditDialog::~EditDialog() { delete ui; }
 
 void EditDialog::on_m_acceptButton_clicked() {
   if (fieldsIsValid()) {
+
     QString typeValue = ui->m_typeComboBox->currentText();
     if (m_typesTable.contains(typeValue)) {
       m_city.m_type = QString::number(m_typesTable.value(typeValue));
@@ -62,7 +75,11 @@ void EditDialog::on_m_acceptButton_clicked() {
     m_city.m_description = ui->m_descriptionLineEdit->text();
     m_city.m_population = ui->m_populationLineEdit->text().toInt();
 
-    m_model->editCity(m_city);
+    if (isEditOp) {
+      m_model->editCity(m_city);
+    } else {
+      m_model->addCity(m_city);
+    }
     close();
   }
 }

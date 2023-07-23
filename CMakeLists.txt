@@ -20,7 +20,6 @@ set(SOURCES
         db/citiesrepository.cpp
         entity/city.cpp
         model/citiestablemodel.cpp
-        dialog/adddialog.cpp
         dialog/editdialog.cpp
         entity/type.cpp
 )
@@ -31,14 +30,12 @@ set(HEADERS
         entity/city.h
         model/citiestablemodel.h
         populationfilter.h
-        dialog/adddialog.h
         dialog/editdialog.h
         entity/type.h
 )
 
 set(FORMS
         mainwindow.ui
-        dialog/adddialog.ui
         dialog/editdialog.ui
 )
 
