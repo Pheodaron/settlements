@@ -4,7 +4,6 @@
 #include <QAbstractTableModel>
 #include <db/citiesrepository.h>
 #include <entity/city.h>
-#include <populationfilter.h>
 
 class CitiesTableModel : public QAbstractTableModel {
   Q_OBJECT

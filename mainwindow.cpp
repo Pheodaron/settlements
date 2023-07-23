@@ -35,26 +35,16 @@ MainWindow::MainWindow(QString dbPath, QWidget *parent)
   ui->m_tableView->setColumnWidth(5, 130);
   ui->m_tableView->setColumnWidth(6, 130);
 
-  ui->m_comboBox->addItem("Население не учитывать.",
-                          PopulationFilter::NoFilter);
-  ui->m_comboBox->addItem("Население от 1 тыс. чел.",
-                          PopulationFilter::MoreThan1Thousand);
-  ui->m_comboBox->addItem("Население от 10 тыс. чел.",
-                          PopulationFilter::MoreThan10Thousands);
-  ui->m_comboBox->addItem("Население от 25 тыс. чел.",
-                          PopulationFilter::MoreThan25Thousands);
-  ui->m_comboBox->addItem("Население от 50 тыс. чел.",
-                          PopulationFilter::MoreThan50Thousands);
-  ui->m_comboBox->addItem("Население от 100 тыс. чел.",
-                          PopulationFilter::MoreThan100Thousands);
-  ui->m_comboBox->addItem("Население от 250 тыс. чел.",
-                          PopulationFilter::MoreThan250Thousands);
-  ui->m_comboBox->addItem("Население от 500 тыс. чел.",
-                          PopulationFilter::MoreThan500Thousands);
-  ui->m_comboBox->addItem("Население от 1 млн. чел.",
-                          PopulationFilter::MoreThan1Million);
-  ui->m_comboBox->addItem("Население от 2 млн. чел.",
-                          PopulationFilter::MoreThan2Millions);
+  ui->m_comboBox->addItem("Население не учитывать.", 0);
+  ui->m_comboBox->addItem("Население от 1 тыс. чел.", 1000);
+  ui->m_comboBox->addItem("Население от 10 тыс. чел.", 10000);
+  ui->m_comboBox->addItem("Население от 25 тыс. чел.", 25000);
+  ui->m_comboBox->addItem("Население от 50 тыс. чел.", 50000);
+  ui->m_comboBox->addItem("Население от 100 тыс. чел.", 100000);
+  ui->m_comboBox->addItem("Население от 250 тыс. чел.", 250000);
+  ui->m_comboBox->addItem("Население от 500 тыс. чел.", 500000);
+  ui->m_comboBox->addItem("Население от 1 млн. чел.", 1000000);
+  ui->m_comboBox->addItem("Население от 2 млн. чел.", 2000000);
 
   connect(ui->m_comboBox, &QComboBox::currentTextChanged, this, [&] {
     m_model.changePopulationFilter(ui->m_comboBox->currentData().toInt());
