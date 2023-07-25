@@ -1,5 +1,9 @@
 CMakeLists.txt.user
 
 build/
+
 release/
+
+settlements.exe
+
 settlements-editor.deb
