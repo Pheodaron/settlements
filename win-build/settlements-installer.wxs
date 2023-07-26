@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+   <Product Id="*" UpgradeCode="12345678-1234-1234-1234-111111111111" 
+            Name="Settlements" Version="1.0.0" Manufacturer="Pheodaron" Language="1033">
+      <Package InstallerVersion="200" Compressed="yes" Comments="Windows Installer Package"/>
+      <Media Id="1" Cabinet="product.cab" EmbedCab="yes"/>
+
+      <Directory Id="TARGETDIR" Name="SourceDir">
+         <Directory Id="ProgramFilesFolder">
+            <Directory Id="INSTALLDIR" Name="SettlementsEditor">
+               <Component Id="ApplicationFiles" Guid="12345678-1234-1234-1234-222222222222">
+                  <File Id="ApplicationFile" Source="settlements.exe"/>
+                  <File Id="DbFile" Source="cities.db3"/>
+                  <File Id="Qt5Core.dll" Source="Qt5Core.dll"/>
+                  <File Id="Qt5Gui.dll" Source="Qt5Gui.dll"/>
+                  <File Id="Qt5Sql.dll" Source="Qt5Sql.dll"/>
+                  <File Id="Qt5Widgets.dll" Source="Qt5Widgets.dll"/>
+               </Component>
+               <Directory Id="sqldrivers" Name="sqldrivers">
+               <Component Id="ApplicationFilesSqlDriver" Guid="12345678-1234-1234-1234-222222222223">
+                  <File Id="qsqlite.dll" Source="sqldrivers\qsqlite.dll"/>
+                  </Component>
+               </Directory>
+               <Directory Id="platforms" Name="platforms">
+               <Component Id="ApplicationFilesPlatforms" Guid="12345678-1234-1234-1234-222222222224">
+                  <File Id="qwindows.dll" Source="platforms\qwindows.dll"/>
+                  </Component>
+               </Directory>
+            </Directory>
+         </Directory>
+         <Directory Id="ProgramMenuFolder">
+            <Directory Id="ProgramMenuSubfolder" Name="Example">
+               <Component Id="ApplicationShortcuts" Guid="12345678-1234-1234-1234-333333333333">
+                  <Shortcut Id="ApplicationShortcut1" Name="SettlementsEditor" Description="SettlementsEditor" 
+                            Target="[INSTALLDIR]settlements.exe" WorkingDirectory="INSTALLDIR"/>
+                  <RegistryValue Root="HKCU" Key="Software\Pheodaron\Settlements" 
+                            Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+                  <RemoveFolder Id="ProgramMenuSubfolder" On="uninstall"/>
+               </Component>
+            </Directory>
+         </Directory>
+      </Directory>
+
+      <Feature Id="DefaultFeature" Level="1">
+         <ComponentRef Id="ApplicationFiles"/>
+         <ComponentRef Id="ApplicationFilesSqlDriver"/>
+         <ComponentRef Id="ApplicationFilesPlatforms"/>
+         <ComponentRef Id="ApplicationShortcuts"/>
+      </Feature>
+   </Product>
+</Wix>
