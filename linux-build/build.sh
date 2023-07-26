@@ -12,7 +12,7 @@ mkdir ./settlements-editor/bin/
 cp ./build/settlements ./settlements-editor/bin/
 mkdir ./settlements-editor/DEBIAN/
 cp ./debian-manifest/control ./settlements-editor/DEBIAN/control
-mkdir ./settlements-editor/etc/
-cp ../cities.db3 ./settlements-editor/etc
+mkdir ./settlements-editor/usr/share/
+cp ../cities.db3 ./settlements-editor/usr/share
 dpkg-deb --root-owner-group --build settlements-editor
 rm -rf ./settlements-editor
