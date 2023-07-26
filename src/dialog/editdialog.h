@@ -21,7 +21,7 @@ public:
                       QWidget *parent = nullptr);
   ~EditDialog();
 
-  bool fieldsIsValid();
+  bool fieldsIsValid(); // функция проверки полей
 
 private slots:
 
@@ -31,16 +31,16 @@ private slots:
 
 private:
   Ui::EditDialog *ui;
-  CitiesTableModel *m_model;
-  City m_city;
-  QMap<int, int> m_typeIds;
-  QMap<QString, int> m_typesTable;
+  CitiesTableModel *m_model; // ссылка на табличную модель
+  City m_city; // сущность населенного пункта в диалоге
+  QMap<int, int> m_typeIds; // мапа соответствия айди типа позиции в комбобоксе
+  QMap<QString, int> m_typesTable; // мапа соответствия имен типов айди типов
 
-  QRegExp latRx;
-  QRegExp lonRx;
-  QRegExp altRx;
+  QRegExp latRx; // регекс для проверки широты
+  QRegExp lonRx; // регекс для проверки долготы
+  QRegExp altRx; // регекс для проверки высоты
 
-  bool isEditOp = false;
+  bool isEditOp = false; // флаг режима работы
 };
 
 #endif // EDITDIALOG_H

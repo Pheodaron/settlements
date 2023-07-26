@@ -8,6 +8,8 @@ EditDialog::EditDialog(QList<Type> types, CitiesTableModel *model,
       altRx("^-?\\d{1,}(\\.\\d{1,})?$") {
 
   ui->setupUi(this);
+
+  // инициализация комбобокса типов нп
   for (Type &item : types) {
     ui->m_typeComboBox->addItem(item.m_type_name);
     m_typesTable.insert(item.m_type_name, item.m_type_id);
@@ -34,6 +36,7 @@ EditDialog::EditDialog(int row, QList<Type> types, CitiesTableModel *model,
   isEditOp = true;
   m_city = m_model->getCity(row);
 
+  // проверка и отрисовка правильного типа
   QRegExp re("\\d*");
   if (re.exactMatch(m_city.m_type) && !m_city.m_type.isEmpty()) {
     ui->m_typeComboBox->setCurrentIndex(m_typeIds[m_city.m_type.toInt()]);
@@ -57,6 +60,7 @@ EditDialog::~EditDialog() { delete ui; }
 void EditDialog::on_m_acceptButton_clicked() {
   if (fieldsIsValid()) {
 
+    // отображение наименования типа в его айди если такое наименование существует
     QString typeValue = ui->m_typeComboBox->currentText();
     if (m_typesTable.contains(typeValue)) {
       m_city.m_type = QString::number(m_typesTable.value(typeValue));
